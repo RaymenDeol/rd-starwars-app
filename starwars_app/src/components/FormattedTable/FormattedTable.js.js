@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { findRenderedComponentWithType } from 'react-dom/cjs/react-dom-test-utils.development';
 
-
+//FormattedTable component inputs array of planet details and return formatted material UI table
 const FormattedTable = (props) => {
 
   const useStyles = makeStyles({
@@ -24,18 +24,14 @@ const FormattedTable = (props) => {
     }, 
   });
 
-
-var planetArr = Object.values(props);
-
-console.log(planetArr[0].length);
-
-
+  //Store props object in an array type and iterate through array elements pushing grouped planet details to the creatData function where a object is created for each project.
+  const planetArr = Object.values(props);
+  const rows = [];
+  const classes = useStyles();
 
   function createData(name, terrain, population) {
     return { name, terrain, population};
   }
-  
-  var rows = [];
 
 
   for (var i = 0; i < planetArr[0].length; i++) {
@@ -43,10 +39,7 @@ console.log(planetArr[0].length);
     rows.push(row);
   };
 
-    
-  const classes = useStyles();
-  
-
+//returns table with data mapped from rows array to table cell values
   return (
 
     <TableContainer component={Paper}>
